@@ -14,6 +14,7 @@
 		3FE81DA62ADE8CBE00993B3D /* MemoGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81DA52ADE8CBE00993B3D /* MemoGameTests.swift */; };
 		3FE81DB02ADE8CBE00993B3D /* MemoGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81DAF2ADE8CBE00993B3D /* MemoGameUITests.swift */; };
 		3FE81DB22ADE8CBE00993B3D /* MemoGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81DB12ADE8CBE00993B3D /* MemoGameUITestsLaunchTests.swift */; };
+		3FE81DBF2ADE8D9000993B3D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81DBE2ADE8D9000993B3D /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		3FE81DAB2ADE8CBE00993B3D /* MemoGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemoGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE81DAF2ADE8CBE00993B3D /* MemoGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameUITests.swift; sourceTree = "<group>"; };
 		3FE81DB12ADE8CBE00993B3D /* MemoGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FE81DBE2ADE8D9000993B3D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				3FE81D942ADE8CBD00993B3D /* MemoGameApp.swift */,
 				3FE81D962ADE8CBD00993B3D /* ContentView.swift */,
+				3FE81DBE2ADE8D9000993B3D /* CardView.swift */,
 				3FE81D982ADE8CBE00993B3D /* Assets.xcassets */,
 				3FE81D9A2ADE8CBE00993B3D /* Preview Content */,
 			);
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FE81D972ADE8CBD00993B3D /* ContentView.swift in Sources */,
+				3FE81DBF2ADE8D9000993B3D /* CardView.swift in Sources */,
 				3FE81D952ADE8CBD00993B3D /* MemoGameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
