@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     let content: String
+    let color: Color
             @State var isFaceUp : Bool = true
             var body: some View {
                 ZStack{
@@ -18,10 +19,10 @@ struct CardView: View {
                         base.strokeBorder(lineWidth: 2)
                         Text(content).font(.largeTitle)
                     
-                }.opacity(isFaceUp ? 1 : 0)
-                base.fill().opacity(isFaceUp ? 0 : 1)
+                }.opacity(isFaceUp ? 0 : 1)
+                base.fill().opacity(isFaceUp ? 1 : 0)
                 }
-                .foregroundColor(.blue)
+                .foregroundColor(color)
                 .onTapGesture(perform: {isFaceUp.toggle()})
             }
 }

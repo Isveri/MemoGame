@@ -9,19 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
 
-    let emojisTheme1 =  ["😃","🐸","🐯","🪲","🪱","🐹","😃","🐸","🐯","🪲","🪱","🐹"]
+    let emojisTheme1 =  ["😃","😆","🙃","😳","😎","😮","😃","😆","🙃","😳","😎","😮"]
     let emojisTheme2 = ["🥕", "🍆", "🌽", "🍅","🥕", "🍆", "🌽", "🍅"]
     let emojisTheme3 = ["🐶", "🐱", "🦁", "🐵", "🐘", "🦊", "🐢", "🐶", "🐱", "🦁", "🐵", "🐘", "🦊", "🐢"]
-
-    let emojis = emojisTheme1.shuffled();
+    
+    @State var emojis = ["😃","😆","🙃","😳","😎","😮","😃","😆","🙃","😳","😎","😮"]
 
     @State var numberOfCards = 10
-    @State var themeColor:Color = .blue
+    @State var themeColor:Color = Color.blue
 
     var body: some View {
         
         VStack {
-            Text("Memo").frame(alignment: .center)
+            Text("Memo").frame(alignment: .center).font(.largeTitle)
             ScrollView{
                 cardDisplay
             }
@@ -38,10 +38,12 @@ struct ContentView: View {
                 .onTapGesture(perform: {
                     changeTheme(theme:"t1")
                 })
+            Spacer()
             ThemeChangeButton(color: $themeColor, icon: "carrot", text: "Motyw 2")
                 .onTapGesture(perform: {
                     changeTheme(theme:"t2")
                 })
+            Spacer()
             ThemeChangeButton(color: $themeColor, icon: "pawprint.circle", text: "Motyw 3")
                 .onTapGesture(perform: {
                     changeTheme(theme:"t3")
@@ -53,17 +55,14 @@ struct ContentView: View {
         if(theme == "t2"){
             self.themeColor = Color.red
             emojis = emojisTheme2.shuffled()
-            numberOfCards = numberOfCards.count
         }
         else if(theme == "t3"){
             self.themeColor = Color.green
-            emojis = emojisTheme2.shuffled()
-            numberOfCards = numberOfCards.count
+            emojis = emojisTheme3.shuffled()
         }
         else{
             self.themeColor = Color.blue
             emojis = emojisTheme1.shuffled()
-            numberOfCards = emojisTheme1.count
         }
     }
 
@@ -84,10 +83,10 @@ struct ContentView: View {
 //     }
     
     var cardDisplay: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]){
-                    ForEach(0..<numberOfCards, id: \.self){
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]){
+            ForEach(0..<emojis.count, id: \.self){
                         index in
-                        CardView(content: emojis[index])
+                        CardView(content: emojis[index],color: themeColor)
                         .aspectRatio(2/3, contentMode: .fit)
                     }
                 }.foregroundColor(themeColor)

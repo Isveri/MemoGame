@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FDF83622AFA5695004F92B0 /* ThemeChangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDF83612AFA5695004F92B0 /* ThemeChangeButton.swift */; };
 		3FE81D952ADE8CBD00993B3D /* MemoGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81D942ADE8CBD00993B3D /* MemoGameApp.swift */; };
 		3FE81D972ADE8CBD00993B3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81D962ADE8CBD00993B3D /* ContentView.swift */; };
 		3FE81D992ADE8CBE00993B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FE81D982ADE8CBE00993B3D /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FDF83612AFA5695004F92B0 /* ThemeChangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChangeButton.swift; sourceTree = SOURCE_ROOT; };
 		3FE81D912ADE8CBD00993B3D /* MemoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE81D942ADE8CBD00993B3D /* MemoGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameApp.swift; sourceTree = "<group>"; };
 		3FE81D962ADE8CBD00993B3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				3FE81D942ADE8CBD00993B3D /* MemoGameApp.swift */,
 				3FE81D962ADE8CBD00993B3D /* ContentView.swift */,
+				3FDF83612AFA5695004F92B0 /* ThemeChangeButton.swift */,
 				3FE81DBE2ADE8D9000993B3D /* CardView.swift */,
 				3FE81D982ADE8CBE00993B3D /* Assets.xcassets */,
 				3FE81D9A2ADE8CBE00993B3D /* Preview Content */,
@@ -263,6 +266,7 @@
 				3FE81D972ADE8CBD00993B3D /* ContentView.swift in Sources */,
 				3FE81DBF2ADE8D9000993B3D /* CardView.swift in Sources */,
 				3FE81D952ADE8CBD00993B3D /* MemoGameApp.swift in Sources */,
+				3FDF83622AFA5695004F92B0 /* ThemeChangeButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

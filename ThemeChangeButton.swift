@@ -14,8 +14,8 @@ struct ThemeChangeButton: View {
 
     var body: some View {
             VStack{
-                Image(systemName: symbol)
-                Text(text).font(.title3)
+                Image(systemName: icon).foregroundColor(color)
+                Text(text).font(.caption).foregroundColor(color)
             }
     }
 
@@ -23,6 +23,6 @@ struct ThemeChangeButton: View {
 
 struct ThemeChangeButton_Previews: PreviewProvider {
     static var previews: some View {
-        SectionButton(color: .constant(.blue), icon: "face.smiling", text: "Motyw 1")
+        ThemeChangeButton(color: .constant(Color.blue), icon: "smiley", text: "Motyw 1")
     }
 }
