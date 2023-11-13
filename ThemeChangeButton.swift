@@ -8,21 +8,19 @@
 import SwiftUI
 
 struct ThemeChangeButton: View {
-    @Binding var color: Color
-    @State var icon: String
-    @State var text: String
+    @ObservedObject var viewModel : MemoGameViewModel
+    var icon: String
+    var text: String
 
     var body: some View {
-            VStack{
-                Image(systemName: icon).foregroundColor(color)
-                Text(text).font(.caption).foregroundColor(color)
-            }
-    }
-
-}
-
-struct ThemeChangeButton_Previews: PreviewProvider {
-    static var previews: some View {
-        ThemeChangeButton(color: .constant(Color.blue), icon: "smiley", text: "Motyw 1")
+        Button(action: {
+            viewModel.changeTheme(theme:text)
+        }
+            , label:{
+                VStack{
+                    Image(systemName: icon).foregroundColor(viewModel.themeColor)
+                    Text(text).font(.caption).foregroundColor(viewModel.themeColor)
+                }
+            })
     }
 }

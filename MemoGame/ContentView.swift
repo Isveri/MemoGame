@@ -9,23 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
 
-    let emojisTheme1 =  ["😃","😆","🙃","😳","😎","😮","😃","😆","🙃","😳","😎","😮"]
-    let emojisTheme2 = ["🥕", "🍆", "🌽", "🍅","🥕", "🍆", "🌽", "🍅"]
-    let emojisTheme3 = ["🐶", "🐱", "🦁", "🐵", "🐘", "🦊", "🐢", "🐶", "🐱", "🦁", "🐵", "🐘", "🦊", "🐢"]
-    
-    @State var emojis = ["😃","😆","🙃","😳","😎","😮","😃","😆","🙃","😳","😎","😮"]
-
-    @State var numberOfCards = 10
-    @State var themeColor:Color = Color.blue
+    @ObservedObject var viewModel: MemoGameViewModel
 
     var body: some View {
         
         VStack {
             Text("Memo").frame(alignment: .center).font(.largeTitle)
             ScrollView{
-                cardDisplay
+                cardDisplay.animation(.default, value: viewModel.cards)
             }
-//            cardAdjuster
+            Button("SHUFFLE"){
+                viewModel.shuffle()
+            }.font(.title2).padding(20).foregroundColor(viewModel.themeColor)
+            Spacer()
            themeSelector
         }.padding()
     }
@@ -34,75 +30,32 @@ struct ContentView: View {
 
     var themeSelector: some View {
         HStack {
-            ThemeChangeButton(color: $themeColor, icon: "smiley", text: "Motyw 1")
-                .onTapGesture(perform: {
-                    changeTheme(theme:"t1")
-                })
+            ThemeChangeButton(viewModel: viewModel, icon: "smiley", text: "Motyw 1")
             Spacer()
-            ThemeChangeButton(color: $themeColor, icon: "carrot", text: "Motyw 2")
-                .onTapGesture(perform: {
-                    changeTheme(theme:"t2")
-                })
+            ThemeChangeButton(viewModel: viewModel, icon: "carrot", text: "Motyw 2")
             Spacer()
-            ThemeChangeButton(color: $themeColor, icon: "pawprint.circle", text: "Motyw 3")
-                .onTapGesture(perform: {
-                    changeTheme(theme:"t3")
-                })
+            ThemeChangeButton(viewModel: viewModel, icon: "pawprint.circle", text: "Motyw 3")
         }
     }
 
-    func changeTheme(theme:String){
-        if(theme == "t2"){
-            self.themeColor = Color.red
-            emojis = emojisTheme2.shuffled()
-        }
-        else if(theme == "t3"){
-            self.themeColor = Color.green
-            emojis = emojisTheme3.shuffled()
-        }
-        else{
-            self.themeColor = Color.blue
-            emojis = emojisTheme1.shuffled()
-        }
-    }
-
-//     var cardAdjuster: some View {
-//         HStack {
-//             cardAdder
-//             Spacer()
-//             cardRemover
-//         }
-//     }
-    
-//     func adjustCardNumber(by offset: Int, symbol: String) -> some View{
-//         return Button(symbol){
-//             numberOfCards += offset
-//         }.frame(width: 50)
-//         .border(themeColor)
-//         .disabled(numberOfCards <= 2 && symbol == "-" || numberOfCards >= emojis.count && symbol == "+")
-//     }
-    
     var cardDisplay: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]){
-            ForEach(0..<emojis.count, id: \.self){
-                        index in
-                        CardView(content: emojis[index],color: themeColor)
-                        .aspectRatio(2/3, contentMode: .fit)
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 85),spacing: 0)], spacing: 0){
+            ForEach(viewModel.cards){
+                card in
+                CardView(card,viewModel.themeColor)
+                    .aspectRatio(2/3, contentMode: .fit)
+                    .padding(4)
+                    .onTapGesture {
+                        viewModel.choose(card: card)
                     }
-                }.foregroundColor(themeColor)
+            }
+        }.foregroundColor(viewModel.themeColor)
     }
-//     var cardAdder: some View {
-//         adjustCardNumber(by: 2, symbol: "+")
-//     }
-    
-//     var cardRemover: some View {
-//         adjustCardNumber(by: -2, symbol: "-")
-//     }
-    
 
-    
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(viewModel: MemoGameViewModel())
+    }
 }
