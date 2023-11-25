@@ -22,7 +22,7 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
     
     var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
-            cards.indices.filter {index in cards[index].isFaceUp}.only
+            cards.indices.filter{index in cards[index].isFaceUp}.only
         }
         set{
             cards.indices.forEach{cards[$0].isFaceUp = (newValue == $0)}
@@ -71,6 +71,6 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
 
 extension Array {
     var only: Element? {
-        count == 1 ? first :nil
+        count == 1 ? first : nil
     }
 }

@@ -20,7 +20,7 @@ struct CardView: View {
             let base = RoundedRectangle(cornerRadius: 12)
             Group {
                 base.fill(Color.white)
-                base.strokeBorder(lineWidth: 3)
+                base.strokeBorder(lineWidth: 2)
                 Text(card.content).font(.system(size: 200))
                     .minimumScaleFactor(0.01)
                     .aspectRatio(1,contentMode: .fit)

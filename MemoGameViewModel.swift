@@ -10,12 +10,12 @@ import SwiftUI
  
 class MemoGameViewModel: ObservableObject {
     
-    let emojisTheme1 =  ["😃","😆","🙃","😳","😎","😮","😃","😆","🙃","😳","😎","😮"]
-    let emojisTheme2 = ["🥕", "🍆", "🌽", "🍅","🥕", "🍆", "🌽", "🍅"]
-    let emojisTheme3 = ["🐶", "🐱", "🦁", "🐵", "🐘", "🦊", "🐢", "🐶", "🐱", "🦁", "🐵", "🐘", "🦊", "🐢"]
-    private static var emojis:[String] =  ["😃","😆","🙃","😳","😎","😮","🐶"]
+    private static let emojisTheme1 =  ["😃","😆","🙃","😳","😎","😮","😂","🫡"]
+    private static let emojisTheme2 = ["🥕", "🍆", "🌽", "🍅"]
+    private static let emojisTheme3 = ["🐶", "🐱", "🦁", "🐵", "🐘", "🦊", "🐢"]
+    private static var emojis:[String] = emojisTheme1
     private static func createMemoGameModel() -> MemoGameModel<String> {
-        return MemoGameModel<String>(numberOfPairsOfCards: emojis.count) {
+        return MemoGameModel<String>(numberOfPairsOfCards: 8) {
             index in
             if emojis.indices.contains(index) {
                 return emojis[index]
@@ -35,24 +35,24 @@ class MemoGameViewModel: ObservableObject {
         emojis = newEmojis
     }
     
-    @Published var themeColor  = Color.blue
+    var themeColor  = Color.blue
     
     func changeTheme(theme: String){
         if(theme == "Motyw 2"){
             self.themeColor = Color.red
-            MemoGameViewModel.setEmojis(newEmojis: emojisTheme2)
+            MemoGameViewModel.setEmojis(newEmojis: MemoGameViewModel.emojisTheme2)
             model = MemoGameViewModel.createMemoGameModel()
             shuffle()
         }
         else if(theme == "Motyw 3"){
             self.themeColor = Color.green
-            MemoGameViewModel.setEmojis(newEmojis: emojisTheme3)
+            MemoGameViewModel.setEmojis(newEmojis: MemoGameViewModel.emojisTheme3)
             model = MemoGameViewModel.createMemoGameModel()
             shuffle()
         }
         else{
             self.themeColor = Color.blue
-            MemoGameViewModel.setEmojis(newEmojis: emojisTheme1)
+            MemoGameViewModel.setEmojis(newEmojis: MemoGameViewModel.emojisTheme1)
             model = MemoGameViewModel.createMemoGameModel()
             shuffle();
         }
