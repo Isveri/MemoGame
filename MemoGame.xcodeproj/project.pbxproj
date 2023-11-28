@@ -18,6 +18,7 @@
 		3FE81DB02ADE8CBE00993B3D /* MemoGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81DAF2ADE8CBE00993B3D /* MemoGameUITests.swift */; };
 		3FE81DB22ADE8CBE00993B3D /* MemoGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81DB12ADE8CBE00993B3D /* MemoGameUITestsLaunchTests.swift */; };
 		3FE81DBF2ADE8D9000993B3D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE81DBE2ADE8D9000993B3D /* CardView.swift */; };
+		3FEA862E2B1608C50081DC88 /* CirclePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEA862D2B1608C50081DC88 /* CirclePart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		3FE81DAF2ADE8CBE00993B3D /* MemoGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameUITests.swift; sourceTree = "<group>"; };
 		3FE81DB12ADE8CBE00993B3D /* MemoGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FE81DBE2ADE8D9000993B3D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		3FEA862D2B1608C50081DC88 /* CirclePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclePart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				3FE81D942ADE8CBD00993B3D /* MemoGameApp.swift */,
 				3FE81D962ADE8CBD00993B3D /* ContentView.swift */,
+				3FEA862D2B1608C50081DC88 /* CirclePart.swift */,
 				3FDF83632AFA5F16004F92B0 /* MemoGameModel.swift */,
 				3FDF83612AFA5695004F92B0 /* ThemeChangeButton.swift */,
 				3FE81DBE2ADE8D9000993B3D /* CardView.swift */,
@@ -271,6 +274,7 @@
 			files = (
 				3FDF83642AFA5F16004F92B0 /* MemoGameModel.swift in Sources */,
 				3FE81D972ADE8CBD00993B3D /* ContentView.swift in Sources */,
+				3FEA862E2B1608C50081DC88 /* CirclePart.swift in Sources */,
 				3FDF83662AFA63B5004F92B0 /* MemoGameViewModel.swift in Sources */,
 				3FE81DBF2ADE8D9000993B3D /* CardView.swift in Sources */,
 				3FE81D952ADE8CBD00993B3D /* MemoGameApp.swift in Sources */,

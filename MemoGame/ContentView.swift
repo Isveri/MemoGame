@@ -23,6 +23,7 @@ struct ContentView: View {
             }.font(.title2).padding(20).foregroundColor(viewModel.themeColor)
             Spacer()
            themeSelector
+            //CirclePart(endDegree: .degrees(160)).fill(.blue).foregroundColor(.blue)
         }.padding()
     }
     
