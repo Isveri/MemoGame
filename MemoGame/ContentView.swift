@@ -10,23 +10,29 @@ import SwiftUI
 struct ContentView: View {
 
     @ObservedObject var viewModel: MemoGameViewModel
-
+    @State var lastScoreChange: (Int, String) = (0,"")
+    var temp = (0,"")
+    
     var body: some View {
-        
         VStack {
             Text("Memo").frame(alignment: .center).font(.largeTitle)
             ScrollView{
                 cardDisplay.animation(.default, value: viewModel.cards)
             }
-            Button("SHUFFLE"){
-                viewModel.shuffle()
-            }.font(.title2).padding(20).foregroundColor(viewModel.themeColor)
+            HStack{
+                Text("Wynik: " + String(viewModel.score)).font(.title)
+                Spacer()
+                Button("SHUFFLE"){
+                    withAnimation(.interactiveSpring(response: 1, dampingFraction: 1.5)){
+                        viewModel.shuffle()
+                    }
+                }.font(.title2).padding(20).foregroundColor(viewModel.themeColor)
+            }.padding(.bottom, 20)
             Spacer()
-           themeSelector
+            themeSelector.font(.largeTitle)
         }.padding()
     }
     
-
 
     var themeSelector: some View {
         HStack {
@@ -40,18 +46,33 @@ struct ContentView: View {
 
     var cardDisplay: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 85),spacing: 0)], spacing: 0){
+            let lastScore = viewModel.score
             ForEach(viewModel.cards){
                 card in
                 CardView(card,viewModel.themeColor)
                     .aspectRatio(2/3, contentMode: .fit)
+                    .overlay(card.isFaceUp ? FlyingNumber(number: scoreChange(cardId: card.id)) : nil)
                     .padding(4)
                     .onTapGesture {
                         viewModel.choose(card: card)
+                        lastScoreChange = (viewModel.score - lastScore, card.id)
                     }
             }
         }.foregroundColor(viewModel.themeColor)
+            .onAppear{
+                lastScoreChange = (0, "")
+            }
     }
-
+    
+    func scoreChange(cardId:String) -> Int {
+        if(lastScoreChange.1 == cardId){
+            print(lastScoreChange.0)
+            return lastScoreChange.0
+        } else {
+            return 0
+        }
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

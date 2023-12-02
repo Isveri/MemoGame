@@ -37,6 +37,8 @@ extension View {
 
 extension Animation {
     static func continousRotation() -> Animation {
-        return Animation.linear(duration: 2).repeatForever()
+       // return Animation.linear(duration: 2).repeatForever(autoreverses: false)
+        return Animation.linear(duration: 2)
+        
     }
 }

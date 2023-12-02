@@ -31,6 +31,10 @@ class MemoGameViewModel: ObservableObject {
         return model.cards
     }
     
+    var score: Int {
+        return model.score
+    }
+    
     private static func setEmojis(newEmojis: [String]){
         emojis = newEmojis
     }
@@ -40,18 +44,21 @@ class MemoGameViewModel: ObservableObject {
     func changeTheme(theme: String){
         if(theme == "Motyw 2"){
             self.themeColor = Color.red
+            model.setScore(score: 0)
             MemoGameViewModel.setEmojis(newEmojis: MemoGameViewModel.emojisTheme2)
             model = MemoGameViewModel.createMemoGameModel()
             shuffle()
         }
         else if(theme == "Motyw 3"){
             self.themeColor = Color.green
+            model.setScore(score: 0)
             MemoGameViewModel.setEmojis(newEmojis: MemoGameViewModel.emojisTheme3)
             model = MemoGameViewModel.createMemoGameModel()
             shuffle()
         }
         else{
             self.themeColor = Color.blue
+            model.setScore(score: 0)
             MemoGameViewModel.setEmojis(newEmojis: MemoGameViewModel.emojisTheme1)
             model = MemoGameViewModel.createMemoGameModel()
             shuffle();
