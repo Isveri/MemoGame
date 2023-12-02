@@ -10,18 +10,21 @@ import SwiftUI
 import CoreGraphics
 
 struct CirclePart: Shape {
-    
-    var endDegree: Angle
+    var startAngle: Angle = .zero
+    var endAngle: Angle
     
     func path(in rect: CGRect) -> Path {
         let radius = rect.size.width/2
-        
+        let endAngle = endAngle - .degrees(90)
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let startAngle = startAngle - .degrees(90)
+        let start = CGPoint(x: center.x + radius*cos(CGFloat(startAngle.radians)), y: center.y + radius*sin(CGFloat(startAngle.radians)))
         var p = Path();
-        p.addArc(center: CGPoint(x: radius, y: radius/2), radius: radius, startAngle: .degrees(-90), endAngle: endDegree, clockwise: false)
-        p.addLine(to:CGPoint(x:radius,y:radius/2))
-        p.move(to:CGPoint(x:radius,y:-radius/2))
-        p.addLine(to:CGPoint(x:radius,y:radius/2))
-        return p.strokedPath(.init(lineWidth: 3))
+        p.move(to:center)
+        p.addLine(to: start)
+        p.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        p.addLine(to:center)
+        return p
     }
     
     
