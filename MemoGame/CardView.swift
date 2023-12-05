@@ -21,7 +21,7 @@ struct CardView: View {
             .overlay(RoundedRectangle(cornerRadius: 12).stroke(color, lineWidth: 2))
             .TransformIntoCard(with: card.content, isFaceUp: card.isFaceUp, isMatched: card.isMatched)
             .rotation3DEffect(.degrees(card.isFaceUp ? 180 : 0), axis: (0,1,0))
-            .animation(.linear(duration: 2), value: card.isFaceUp)
+            .animation(.linear(duration: 1), value: card.isFaceUp)
             .foregroundColor(color)
             .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
         

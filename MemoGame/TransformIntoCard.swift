@@ -22,7 +22,7 @@ struct TransformIntoCard: ViewModifier{
                     .minimumScaleFactor(0.01)
                     .aspectRatio(1, contentMode: .fit)
                     .rotationEffect(.degrees(isMatched ? 360 : 0))
-                    .animation(Animation.continousRotation(), value: isMatched)
+                    .animation(isMatched ? Animation.continousRotation() : Animation.linear(duration: 2))
                     .opacity(isFaceUp ? 1 : 0)
             }
             RoundedRectangle(cornerRadius: 12).opacity(isFaceUp ? 0 : 1)
@@ -37,6 +37,6 @@ extension View {
 
 extension Animation {
     static func continousRotation() -> Animation {
-        return Animation.linear(duration: 2).repeatForever()
+        return Animation.linear(duration: 2).repeatForever(autoreverses: false)
     }
 }
